@@ -1,0 +1,22 @@
+﻿@using Music_Store.ViewModels;
+@model IEnumerable<VmGenre>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Browse Genres</h2>
+
+<p>
+    Select from @Model.Count() genres:
+</p>
+
+<ul>
+    @foreach(VmGenre vmGenre in Model)
+    {
+        <li>
+            <a href="@Url.Action("Browse", "Store", new { genre = vmGenre.Name })">
+                @vmGenre.Name
+            </a>
+        </li>
+    }
+</ul>
