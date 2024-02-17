@@ -9,7 +9,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", "AlbumManager", null, new { @class = "" })
+    @Html.ActionLink("Create New", "Create", "StoreManager", null, new { @class = "" })
 </p>
 <table class="table shadow">
     <thead class="text-center table-warning">
@@ -47,8 +47,8 @@
                 @Html.DisplayFor(modelItem => item.AlbumPrice)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "StoreManager", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", "StoreManager", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", "StoreManager", new { id = item.AlbumId }, new { @class = "" }) |
+                @*@Html.ActionLink("Details", "Details", "StoreManager", new { /* id=item.PrimaryKey */ }) |*@
                 @Html.ActionLink("Delete", "Delete", "StoreManager", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

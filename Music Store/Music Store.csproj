@@ -162,6 +162,7 @@
     <Compile Include="Services\GenreService.cs" />
     <Compile Include="Services\StoreService.cs" />
     <Compile Include="ViewModels\VmAlbum.cs" />
+    <Compile Include="ViewModels\VmAlbumEdit.cs" />
     <Compile Include="ViewModels\VmAlbumManager.cs" />
     <Compile Include="ViewModels\VmArtist.cs" />
     <Compile Include="ViewModels\VmGenre.cs" />
@@ -263,6 +264,8 @@
     <Content Include="Views\Store\Browse.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <Content Include="Views\StoreManager\Index.cshtml" />
+    <Content Include="Views\StoreManager\Edit.cshtml" />
+    <Content Include="Views\StoreManager\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

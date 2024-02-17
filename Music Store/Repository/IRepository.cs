@@ -34,6 +34,18 @@ namespace Music_Store.Repository
         T Read(Expression<Func<T, bool>> predicate);
 
         /// <summary>
+        /// Create new data
+        /// </summary>
+        /// <param name="entity"> Data model </param>
+        void Create(T entity);
+
+        /// <summary>
+        /// Update data
+        /// </summary>
+        /// <param name="entity"> Data model </param>
+        void Update(T entity);
+
+        /// <summary>
         /// Save changes
         /// </summary>
         void SaveChanges();

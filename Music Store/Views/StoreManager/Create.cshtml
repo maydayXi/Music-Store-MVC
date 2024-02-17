@@ -1,0 +1,70 @@
+﻿@model Music_Store.ViewModels.VmAlbumEdit
+
+@{
+    ViewBag.Title = "Create";
+    string labelClass = "form-label col-md-2";
+    string selectClass = "form-select shadow-sm";
+    string inputClass = "form-control shadow-sm";
+    string invalidTextClass = "text-danger";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>New Album</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = invalidTextClass })
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.SelectedGenre, htmlAttributes: new { @class = labelClass })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SelectedGenre, Model.SelectGenres, new { @class = selectClass })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.SelectedArtist, htmlAttributes: new { @class = labelClass })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SelectedArtist, Model.SelectArtists, new { @class = selectClass })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = labelClass })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = inputClass } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = invalidTextClass })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = labelClass })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = inputClass } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = invalidTextClass })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.AlbumArtUrl, htmlAttributes: new { @class = labelClass })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AlbumArtUrl, new { htmlAttributes = new { @class = inputClass } })
+                @Html.ValidationMessageFor(model => model.AlbumArtUrl, "", new { @class = invalidTextClass })
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success shadow" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

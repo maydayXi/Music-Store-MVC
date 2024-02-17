@@ -10,6 +10,7 @@ namespace Music_Store.Controllers
 {
     public class StoreController : Controller
     {
+        private readonly RedirectToRouteResult ErrorPageAction;
         private readonly GenreService genreService;
         private readonly AlbumService albumService;
 
@@ -17,6 +18,7 @@ namespace Music_Store.Controllers
         {
             genreService = new GenreService();
             albumService = new AlbumService();
+            ErrorPageAction = RedirectToAction("Error", "Home");
         }
 
         // GET: Show all genre
@@ -35,14 +37,12 @@ namespace Music_Store.Controllers
         /// <returns> Genre of albums </returns>
         public ActionResult Browse(string genre)
         {
-            if (string.IsNullOrEmpty(genre)) 
-                return RedirectToAction("Error", "Home");
+            if (string.IsNullOrEmpty(genre)) return ErrorPageAction;
 
             ViewBag.Genre = genre;
 
             int genreId = genreService.GetGenreIdByName(genre);
-            if(genreId <= 0) 
-                return RedirectToAction("Error", "Home");
+            if(genreId <= 0) return ErrorPageAction;
 
             return View(albumService.GetAlbumsByGenre(genreId, genre));
         }

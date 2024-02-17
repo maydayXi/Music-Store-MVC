@@ -4,7 +4,9 @@ using Music_Store.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Music_Store.Services
 {
@@ -48,5 +50,96 @@ namespace Music_Store.Services
                 Title = src.Title,
                 AlbumPrice = src.Price ?? 0
             });
+
+        /// <summary>
+        /// Get default album model for create
+        /// </summary>
+        /// <returns> default album model </returns>
+        public VmAlbumEdit GetDefaultAlbum() => new VmAlbumEdit()
+        {
+            AlbumId = -1,
+            SelectGenres = _genreRepository.Reads().Select(g => new SelectListItem()
+            {
+                Text = g.GenreName,
+                Value = $"{g.GenreId}"
+            }),
+            SelectArtists = _artistRepository.Reads().Select(a => new SelectListItem()
+            {
+                Text = a.ArtistName,
+                Value = $"{a.ArtistId}"
+            }),
+            Title = string.Empty,
+            Price = 0
+        };
+
+        /// <summary>
+        /// Get Album
+        /// </summary>
+        /// <param name="id"> Album's identity </param>
+        /// <returns> Album information </returns>
+        public VmAlbumEdit GetAlbumById(int id)
+        {
+            Album album = _albumRepository.Read(a => a.AlbumId == id);
+
+            return new VmAlbumEdit()
+            {
+                AlbumId = album.AlbumId,
+                SelectGenres = _genreRepository.Reads().Select(g => new SelectListItem()
+                {
+                    Text = g.GenreName,
+                    Value = $"{g.GenreId}",
+                    Selected = g.GenreId == album.GenreId,
+                }),
+                SelectArtists = _artistRepository.Reads().Select(a => new SelectListItem()
+                {
+                    Text = a.ArtistName,
+                    Value = $"{a.ArtistId}",
+                    Selected = a.ArtistId == album.ArtistId,
+                }),
+                Title = album.Title,
+                Price = album.Price ?? 0
+            };
+        }
+
+        /// <summary>
+        /// Create new album
+        /// </summary>
+        /// <param name="album"> New album model </param>
+        public void CreateNewAlbum(VmAlbumEdit album)
+        {
+            _albumRepository.Create(new Album()
+            {
+                GenreId = int.Parse(album.SelectedGenre),
+                ArtistId = int.Parse(album.SelectedArtist),
+                Title = album.Title,
+                Price = album.Price,
+                AlbumArtUrl = album.AlbumArtUrl,
+            });
+            _albumRepository.SaveChanges();
+        }
+
+        /// <summary>
+        /// Update album data
+        /// </summary>
+        /// <param name="vmAlbumEdit"> New album data </param>
+        public void UpdateAlbum(VmAlbumEdit vmAlbumEdit)
+        {
+            Album album = _albumRepository.Read(a => a.AlbumId == vmAlbumEdit.AlbumId);
+
+            if (album != null)
+            {
+                album.Title = vmAlbumEdit.Title;
+                album.Price = vmAlbumEdit.Price;
+                album.ArtistId = int.Parse(vmAlbumEdit.SelectedArtist);
+                album.GenreId = int.Parse(vmAlbumEdit.SelectedGenre);
+                album.AlbumArtUrl = vmAlbumEdit.AlbumArtUrl;
+                _albumRepository.Update(album);
+                _albumRepository.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Update album failed.");
+            }
+        }
     }
 }

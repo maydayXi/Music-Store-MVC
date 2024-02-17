@@ -1,6 +1,7 @@
 ﻿using Music_Store.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
@@ -55,6 +56,24 @@ namespace Music_Store.Repository
 
             if(!_Context.Configuration.ValidateOnSaveEnabled)
                 _Context.Configuration.ValidateOnSaveEnabled = true;
+        }
+
+        /// <summary>
+        /// Create new data
+        /// </summary>
+        /// <param name="entity"> Data model </param>
+        public void Create(TEntity entity)
+        {
+            _Context.Set<TEntity>().Add(entity);
+        }
+
+        /// <summary>
+        /// Update data
+        /// </summary>
+        /// <param name="entity"> Data model </param>
+        public void Update(TEntity entity)
+        {
+            _Context.Entry(entity).State = EntityState.Modified;
         }
     }
 }
