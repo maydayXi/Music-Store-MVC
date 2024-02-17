@@ -48,17 +48,6 @@ namespace Music_Store.Repository
             => _Context.Set<TEntity>().Where(predicate).AsEnumerable();
 
         /// <summary>
-        /// Save all change
-        /// </summary>
-        public void SaveChanges()
-        {
-            _Context.SaveChanges();
-
-            if(!_Context.Configuration.ValidateOnSaveEnabled)
-                _Context.Configuration.ValidateOnSaveEnabled = true;
-        }
-
-        /// <summary>
         /// Create new data
         /// </summary>
         /// <param name="entity"> Data model </param>
@@ -75,5 +64,26 @@ namespace Music_Store.Repository
         {
             _Context.Entry(entity).State = EntityState.Modified;
         }
+
+        /// <summary>
+        /// Delete data
+        /// </summary>
+        /// <param name="entity"> Data model </param>
+        public void Delete(TEntity entity)
+        {
+            _Context.Entry(entity).State = EntityState.Deleted;
+        }
+
+        /// <summary>
+        /// Save all change
+        /// </summary>
+        public void SaveChanges()
+        {
+            _Context.SaveChanges();
+
+            if(!_Context.Configuration.ValidateOnSaveEnabled)
+                _Context.Configuration.ValidateOnSaveEnabled = true;
+        }
+
     }
 }

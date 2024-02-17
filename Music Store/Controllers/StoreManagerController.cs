@@ -45,10 +45,15 @@ namespace Music_Store.Controllers
         /// <returns> Album list page </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(VmAlbumEdit vmAlbumEdit)
+        public ActionResult Create([Bind(Exclude = "SelectGenres, SelectArtists")]VmAlbumEdit vmAlbumEdit)
         {
-            _storeService.CreateNewAlbum(vmAlbumEdit);
-            return RedirectToAction("Index", "StoreManager");
+            if (ModelState.IsValid)
+            {
+                _storeService.CreateNewAlbum(vmAlbumEdit);
+                return RedirectToAction("Index", "StoreManager");
+            }
+
+            return View(vmAlbumEdit);
         }
 
         /// <summary>
@@ -76,7 +81,7 @@ namespace Music_Store.Controllers
         /// <returns> Album list </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(VmAlbumEdit vmAlbumEdit)
+        public ActionResult Edit([Bind(Exclude = "SelectGenres, SelectArtists")]VmAlbumEdit vmAlbumEdit)
         {
             try
             {
@@ -87,6 +92,35 @@ namespace Music_Store.Controllers
             {
                 return ErrorPageAction;
             }
+        }
+
+        /// <summary>
+        /// Get：StoreManager/Detele/{id}
+        /// </summary>
+        /// <param name="id"> Album identity </param>
+        /// <returns> Delete alert page </returns>
+        public ActionResult Delete(int id)
+        {
+            if (id <= 0) return ErrorPageAction;
+            else return View(_storeService.GetDeleteAlbumById(id));
+        }
+
+        /// <summary>
+        /// Delete album data 
+        /// </summary>
+        /// <param name="vmAlbum"> album data from user </param>
+        /// <returns> Album list </returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(VmAlbum vmAlbum)
+        {
+            if (ModelState.IsValid)
+            {
+                _storeService.DeleteAlbum(vmAlbum);
+                return RedirectToAction("Index", "StoreManager");
+            }
+
+            return ErrorPageAction;
         }
     }
 }

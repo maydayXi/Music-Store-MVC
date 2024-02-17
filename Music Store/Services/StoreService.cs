@@ -102,6 +102,22 @@ namespace Music_Store.Services
         }
 
         /// <summary>
+        /// Get album user want to delete 
+        /// </summary>
+        /// <param name="id"> Album identity </param>
+        /// <returns> Album title and identity </returns>
+        public VmAlbum GetDeleteAlbumById(int id)
+        {
+            Album album = _albumRepository.Read(a => a.AlbumId == id);
+
+            return new VmAlbum()
+            {
+                Title = album.Title,
+                AlbumId = album.AlbumId
+            };
+        }
+
+        /// <summary>
         /// Create new album
         /// </summary>
         /// <param name="album"> New album model </param>
@@ -139,6 +155,25 @@ namespace Music_Store.Services
             else
             {
                 throw new Exception("Update album failed.");
+            }
+        }
+
+        /// <summary>
+        /// Delete album data
+        /// </summary>
+        /// <param name="vmAlbum"> Album data </param>
+        public void DeleteAlbum(VmAlbum vmAlbum)
+        {
+            Album album = _albumRepository.Read(a => a.AlbumId == vmAlbum.AlbumId);
+
+            if(album != null)
+            {
+                _albumRepository.Delete(album);
+                _albumRepository.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Album delete failed.");
             }
         }
     }

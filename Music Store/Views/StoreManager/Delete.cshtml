@@ -1,0 +1,24 @@
+﻿@using Music_Store.ViewModels; 
+@model VmAlbum
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="fw-bold text-danger">Delete Confirmation</h2>
+
+<p>
+    Are you sure you want to delete the album <span class="fw-bold fs-5 ms-2">@Model.Title</span> ?
+</p>
+
+@using(Html.BeginForm("Delete", "StoreManager", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.AlbumId)
+
+    <p class="mb-3">
+        <input type="submit" value="Delete" class="btn btn-danger shadow" />
+    </p>
+    <p>
+        @Html.ActionLink("Back to list", "Index")
+    </p>
+}

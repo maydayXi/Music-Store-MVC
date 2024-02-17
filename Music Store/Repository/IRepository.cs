@@ -46,6 +46,12 @@ namespace Music_Store.Repository
         void Update(T entity);
 
         /// <summary>
+        /// Delete data
+        /// </summary>
+        /// <param name="entity"> Data model </param>
+        void Delete(T entity);
+
+        /// <summary>
         /// Save changes
         /// </summary>
         void SaveChanges();
