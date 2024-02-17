@@ -127,6 +127,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\StoreManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -159,7 +160,10 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Services\AlbumService.cs" />
     <Compile Include="Services\GenreService.cs" />
+    <Compile Include="Services\StoreService.cs" />
     <Compile Include="ViewModels\VmAlbum.cs" />
+    <Compile Include="ViewModels\VmAlbumManager.cs" />
+    <Compile Include="ViewModels\VmArtist.cs" />
     <Compile Include="ViewModels\VmGenre.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +262,7 @@
     <Content Include="Views\Store\Details.cshtml" />
     <Content Include="Views\Store\Browse.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\StoreManager\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

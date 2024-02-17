@@ -28,7 +28,11 @@ namespace Music_Store.Controllers
             }));
         }
 
-
+        /// <summary>
+        /// Show albums
+        /// </summary>
+        /// <param name="genre"> Genre's name </param>
+        /// <returns> Genre of albums </returns>
         public ActionResult Browse(string genre)
         {
             if (string.IsNullOrEmpty(genre)) 
@@ -48,7 +52,7 @@ namespace Music_Store.Controllers
         /// </summary>
         /// <param name="id"> Album identity </param>
         /// <returns> Album detail </returns>
-        public ActionResult Details(int? id) 
+        public ActionResult Details(int? id)
         { 
             return View(new VmAlbum()
             {
