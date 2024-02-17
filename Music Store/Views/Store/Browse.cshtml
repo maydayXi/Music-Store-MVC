@@ -1,7 +1,16 @@
-﻿@model Music_Store.ViewModels.VmGenre
+﻿@using Music_Store.ViewModels
+@model IEnumerable<VmAlbum>
 @{
     ViewBag.Title = "Browse";
 }
 
-<h2>Browsing Genre: @Model.Name</h2>
+<h2>Browsing Genre: @ViewBag.Genre</h2>
 
+<ul>
+    @foreach(VmAlbum album in Model)
+    {
+        <li>
+            @Html.ActionLink(album.Title, "Details", "Store", new { id = album.AlbumId }, new { @class = "" })
+        </li>
+    }
+</ul>

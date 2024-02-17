@@ -155,6 +155,10 @@
       <DependentUpon>ModelMusicShop.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\EFRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Services\AlbumService.cs" />
+    <Compile Include="Services\GenreService.cs" />
     <Compile Include="ViewModels\VmAlbum.cs" />
     <Compile Include="ViewModels\VmGenre.cs" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using Music_Store.ViewModels;
+﻿using Music_Store.Services;
+using Music_Store.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +10,37 @@ namespace Music_Store.Controllers
 {
     public class StoreController : Controller
     {
-        // GET: Store
+        private readonly GenreService genreService;
+        private readonly AlbumService albumService;
+
+        public StoreController()
+        {
+            genreService = new GenreService();
+            albumService = new AlbumService();
+        }
+
+        // GET: Show all genre
         public ActionResult Index()
         {
-
-            return View(new List<VmGenre>()
+            return View(genreService.GetGenres().Select(g => new VmGenre()
             {
-                new VmGenre() { Name = "Disco" },
-                new VmGenre() { Name = "Jazz" },
-                new VmGenre() { Name = "Rock" },
-            });
+                Name = g.GenreName
+            }));
         }
 
 
         public ActionResult Browse(string genre)
         {
-            return View(new VmGenre()
-            {
-                Name = genre,
-            });
+            if (string.IsNullOrEmpty(genre)) 
+                return RedirectToAction("Error", "Home");
+
+            ViewBag.Genre = genre;
+
+            int genreId = genreService.GetGenreIdByName(genre);
+            if(genreId <= 0) 
+                return RedirectToAction("Error", "Home");
+
+            return View(albumService.GetAlbumsByGenre(genreId, genre));
         }
 
         /// <summary>

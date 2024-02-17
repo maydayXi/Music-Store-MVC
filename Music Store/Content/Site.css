@@ -1,6 +1,7 @@
 ﻿/* #region global */
 :root {
     --color-bg-main: #FBF9EF;
+    --color-logo-main: #DA4453;
     --color-subtitle-main: #5E5B54;
     --color-text-main: #F6855E;
 }
@@ -29,6 +30,13 @@ li a {
     color: var(--color-text-main);
     text-decoration: none;
     font-weight: bold;
+}
+/* #endregion */
+
+/* #region Navbar */
+nav .navbar-brand {
+    color: var(--color-logo-main);
+    font-style: italic;
 }
 /* #endregion */
 

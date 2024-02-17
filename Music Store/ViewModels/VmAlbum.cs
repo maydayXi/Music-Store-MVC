@@ -11,6 +11,11 @@ namespace Music_Store.ViewModels
     public class VmAlbum
     {
         /// <summary>
+        /// Album identity
+        /// </summary>
+        public int AlbumId { get; set; }
+
+        /// <summary>
         /// Title of album
         /// </summary>
         public string Title { get; set; }
