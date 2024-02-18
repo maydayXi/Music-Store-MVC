@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,7 @@ namespace Music_Store.ViewModels
         /// <summary>
         /// Album identity
         /// </summary>
+        [Required]
         public int AlbumId { get; set; }
 
         /// <summary>

@@ -11,8 +11,8 @@
 <p>
     @Html.ActionLink("Create New", "Create", "StoreManager", null, new { @class = "" })
 </p>
-<table class="table shadow">
-    <thead class="text-center table-warning">
+<table class="table shadow mb-5">
+    <thead class="text-center table-warning align-middle">
         <tr>
             <th>No</th>
             <th>
@@ -37,13 +37,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Genre.Name)
             </td>
-            <td>
+            <td class="text-wrap">
                 @Html.DisplayFor(modelItem => item.Artist.Name)
             </td>
-            <td>
+            <td class="text-wrap">
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            <td>
+            <td class="text-end">
                 @Html.DisplayFor(modelItem => item.AlbumPrice)
             </td>
             <td>

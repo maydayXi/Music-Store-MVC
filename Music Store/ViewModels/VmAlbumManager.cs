@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -30,6 +31,7 @@ namespace Music_Store.ViewModels
         /// <summary>
         /// Album's price
         /// </summary>
+        [DisplayName("Album Price")]
         public decimal AlbumPrice { get; set; }
     }
 }

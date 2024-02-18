@@ -53,7 +53,6 @@
             @Html.LabelFor(model => model.AlbumArtUrl, htmlAttributes: new { @class = labelClass })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AlbumArtUrl, new { htmlAttributes = new { @class = inputClass } })
-                @Html.ValidationMessageFor(model => model.AlbumArtUrl, "", new { @class = invalidTextClass })
             </div>
         </div>
 
