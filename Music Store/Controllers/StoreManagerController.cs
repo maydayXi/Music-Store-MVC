@@ -1,4 +1,5 @@
-﻿using Music_Store.Services;
+﻿using Music_Store.Security;
+using Music_Store.Services;
 using Music_Store.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Music_Store.Controllers
 {
+    [StoreAuthorize(Roles = "Administrator")]
     public class StoreManagerController : Controller
     {
         private readonly RedirectToRouteResult ErrorPageAction;

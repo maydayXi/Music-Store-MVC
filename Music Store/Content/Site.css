@@ -48,3 +48,7 @@ nav .navbar-brand {
     background: none;
 }
 
+.login-link {
+    color: var(--color-text-main);
+    text-decoration: none;
+}
