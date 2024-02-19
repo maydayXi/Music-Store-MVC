@@ -4,6 +4,8 @@
     --color-logo-main: #DA4453;
     --color-subtitle-main: #5E5B54;
     --color-text-main: #F6855E;
+    --color-text-dark-rgb: 33, 37, 41; 
+    --color-bg-secondary-rgb: 233, 236, 239;
 }
 
 * {
@@ -52,3 +54,54 @@ nav .navbar-brand {
     color: var(--color-text-main);
     text-decoration: none;
 }
+
+/* #region Store index */
+.img-banner, .img-genre {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img-banner {
+    background-image: url("../Images/music-store-banner.jpg");
+    box-shadow: inset 0 0 2rem .5rem rgba(var(--color-bg-secondary-rgb), .6);
+    border-radius: 4px;
+}
+
+.img-link {
+    position: relative;
+    height: 200px;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.img-link::after {
+    content: "";
+    transition: all .5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--color-bg-secondary-rgb), 0);
+}
+
+.img-link:hover::after {
+    background-color: rgba(var(--color-bg-secondary-rgb), .5);
+}
+
+.img-link h3 {
+    position: absolute;
+    color: transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .5s ease-in-out;
+    z-index: 10;
+}
+
+.img-link:hover h3 {
+    color: rgba(var(--color-text-dark-rgb), 1);
+}
+/* #endregion */

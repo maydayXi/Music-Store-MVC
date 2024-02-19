@@ -2,13 +2,34 @@
     ViewBag.Title = "Home Page";
 }
 
-<main>
-    <h1>
-        ASP.NET MVC MUSIC STORE
-    </h1>
-    <hr />
-
-    <p>
-        This is Home Page
-    </p>
-</main>
+<div class="p-5 mb-4 bg-body-secondary rounded-3 shadow-sm">
+    <div class="container-fluid py-4">
+        <div class="row gap-5">
+            <div class="col-md-4 row flex-shrink-1 img-banner">
+            </div>
+            <div class="col-md-5">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        MUSIC STORE 
+                    </h1>
+                    <p class="card-text">
+                        This is a sample ASP.NET MVC application that sells music albums online, 
+                        and that implements site administration, user sign-in, 
+                        and shopping cart functionality.
+                    </p>
+                    <p class="card-text">
+                        <small class="text-body-secondary fst-italic">
+                            Reference 
+                            <a class="text-body-secondary" href="https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/mvc-music-store/" target="_blank">
+                                Microsoft web site
+                            </a>
+                        </small>
+                    </p>
+                    <a class="btn btn-outline-danger shadow-sm" href="@Url.Action("Index", "Store")">
+                        Go to Store
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

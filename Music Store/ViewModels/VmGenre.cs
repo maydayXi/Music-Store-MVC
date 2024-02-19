@@ -17,5 +17,10 @@ namespace Music_Store.ViewModels
         /// </summary>
         [DisplayName("Genre")]
         public string Name {  get; set; }
+
+        /// <summary>
+        /// Image path of Genre
+        /// </summary>
+        public string ImgPath { get; set; }
     }
 }

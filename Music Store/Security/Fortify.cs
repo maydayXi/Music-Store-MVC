@@ -101,15 +101,9 @@ namespace Music_Store.Security
                     rijndaelManaged.Key, rijndaelManaged.IV);
 
                 using(MemoryStream ms = new MemoryStream(cipherText))
-                {
                     using(CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
-                    {
                         using(StreamReader sr = new StreamReader(cs))
-                        {
                             plainText = sr.ReadToEnd();
-                        }
-                    }
-                }
             }
 
             return plainText;

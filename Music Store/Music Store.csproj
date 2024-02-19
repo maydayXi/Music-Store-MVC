@@ -196,7 +196,18 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\alternative-music.jpg" />
+    <Content Include="Images\blues-music.jpg" />
+    <Content Include="Images\classical-music.jpg" />
+    <Content Include="Images\disco-music.jpg" />
+    <Content Include="Images\jazz-music.jpg" />
+    <Content Include="Images\latin-music.jpg" />
+    <Content Include="Images\metal-music.jpg" />
+    <Content Include="Images\music-store-banner.jpg" />
     <Content Include="Images\music-store-logo.png" />
+    <Content Include="Images\pop-music.jpg" />
+    <Content Include="Images\reggae-music.jpg" />
+    <Content Include="Images\rock-music.jpg" />
     <Content Include="Models\ModelMusicShop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelMusicShop.Context.cs</LastGenOutput>

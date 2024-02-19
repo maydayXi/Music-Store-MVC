@@ -24,9 +24,12 @@ namespace Music_Store.Controllers
         // GET: Show all genre
         public ActionResult Index()
         {
+            string imagePath = Server.MapPath("~/Images/jazz-music.jgp");
+
             return View(genreService.GetGenres().Select(g => new VmGenre()
             {
-                Name = g.GenreName
+                Name = g.GenreName,
+                ImgPath = $"/Images/{g.GenreDescription}"
             }));
         }
 

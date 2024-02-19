@@ -5,18 +5,15 @@
 }
 
 <h2>Browse Genres</h2>
+<hr />
 
-<p>
-    Select from @Model.Count() genres:
-</p>
-
-<ul>
+<div class="row g-3 gx-3">
     @foreach(VmGenre vmGenre in Model)
     {
-        <li>
-            <a href="@Url.Action("Browse", "Store", new { genre = vmGenre.Name })">
-                @vmGenre.Name
-            </a>
-        </li>
-    }
-</ul>
+        <a href="@Url.Action("Browse", "Store", new { genre = vmGenre.Name })" class="col-md-3 img-link shadow-sm">
+            <div class="img-genre shadow h-100" style="background-image: url('@vmGenre.ImgPath')">
+                <h3 class="genre-description">@vmGenre.Name</h3>
+            </div>
+        </a>
+    } 
+</div>
